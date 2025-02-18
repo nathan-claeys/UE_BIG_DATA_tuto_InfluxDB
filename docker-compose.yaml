@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+      - DOCKER_INFLUXDB_INIT_ORG=my-org
+      - DOCKER_INFLUXDB_INIT_BUCKET=my-bucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-secret-token
+
+  chronograf:
+    image: chronograf
+    container_name: chronograf
+    ports:
+      - "8888:8888"
+    depends_on:
+      - influxdb
+
+  jupyter:
+    image: jupyter/scipy-notebook:latest
+    container_name: jupyter_notebook
+    ports:
+      - "8889:8888"
+    volumes:
+      - jupyter_data:/home/jovyan/work
+    environment:
+      - JUPYTER_TOKEN=myjupyterpassword
+    depends_on:
+      - influxdb
+    command: start-notebook.sh --NotebookApp.token='myjupyterpassword'
+
+volumes:
+  influxdb_data:
+  jupyter_data:
