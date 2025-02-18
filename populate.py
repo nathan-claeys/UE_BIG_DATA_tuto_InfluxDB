@@ -15,13 +15,11 @@ write_api = client.write_api(write_options=SYNCHRONOUS)
 FILENAME = "data/air-sensor-data.txt"
 
 def import_data():
-    """Lit le fichier et insère les données dans InfluxDB."""
     print("📡 Début de l'importation des données...")
 
     with open(FILENAME, "r") as file:
         for line in file:
             write_api.write(bucket=INFLUXDB_BUCKET, org=INFLUXDB_ORG, record=line)
-            #print(f"✅ Donnée insérée : {line}")
 
     print("✅ Importation terminée.")
 
