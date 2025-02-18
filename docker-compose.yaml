@@ -32,10 +32,10 @@ services:
     volumes:
       - jupyter_data:/home/jovyan/work
     environment:
-      - JUPYTER_TOKEN=myjupyterpassword
+      - JUPYTER_TOKEN=
     depends_on:
       - influxdb
-    command: start-notebook.sh --NotebookApp.token='myjupyterpassword'
+    command: start-notebook.py --NotebookApp.token=''
 
 volumes:
   influxdb_data:
