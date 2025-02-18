@@ -38,7 +38,6 @@ services:
       - JUPYTER_TOKEN=
     depends_on:
       - influxdb
-    command: start-notebook.py --NotebookApp.token=''
 
 volumes:
   influxdb_data:
