@@ -3,6 +3,7 @@ version: '3.8'
 services:
   influxdb:
     image: influxdb:2.7
+    restart: unless-stopped
     container_name: influxdb
     ports:
       - "8086:8086"
@@ -18,6 +19,7 @@ services:
 
   chronograf:
     image: chronograf
+    restart: unless-stopped
     container_name: chronograf
     ports:
       - "8888:8888"
@@ -26,6 +28,7 @@ services:
 
   jupyter:
     image: jupyter/scipy-notebook:latest
+    restart: unless-stopped
     container_name: jupyter_notebook
     ports:
       - "8889:8888"
