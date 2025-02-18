@@ -27,7 +27,7 @@ services:
       - influxdb
 
   jupyter:
-    image: jupyter/scipy-notebook:latest
+    build: .
     restart: unless-stopped
     container_name: jupyter_notebook
     ports:
