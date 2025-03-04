@@ -4,6 +4,6 @@ COPY requirements.txt /tmp/requirements.txt
 
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
-COPY data /home/jovyan/data/
+COPY assets /home/jovyan/assets/
 
 CMD ["start-notebook.py", "--NotebookApp.token=''"]
