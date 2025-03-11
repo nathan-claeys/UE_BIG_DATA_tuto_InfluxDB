@@ -15,7 +15,7 @@ Then open the "main.ipynb" file and in the top right corner click on "Select Ker
 #### First time
 
 Select "Enter the URL of the running Jupyter Server..."
-Write <http://localhost:8889> then type enter.
+Write <http://localhost:8889/lab> then type enter.
 You can now choose a name for your Kernel, for instance : "Tuto_InfluxDB"
 
 #### Other connexions
